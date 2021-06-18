@@ -1,0 +1,6 @@
+version: 0.0
+os: linux
+files:
+   - source: /
+     destination: /home/bitnami/apps/wordpress/htdocs/wp-content/themes/
+
