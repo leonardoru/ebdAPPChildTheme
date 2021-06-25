@@ -31,20 +31,6 @@ global $product;
         <span class="edad_wrapper"><?php esc_html_e( 'Busto:', 'woocommerce' ); ?> <span class="busto"><?php echo get_field('field_60cd193772e4a',$product->get_id()) ?></span></span><br>
         <span class="pantalon_wrapper"><?php esc_html_e( 'Pantalon:', 'woocommerce' ); ?> <span class="pantalon"><?php echo get_field('field_60cd25d3bead3',$product->get_id()) ?></span></span><br>
         <span class="medidas_wrapper"><?php esc_html_e( 'Medidas:', 'woocommerce' ); ?> <span class="medidas"><?php echo get_field('field_60cd24ffbeacf',$product->get_id()) ?></span></span><br>
-        <span>Categorias</span>
-        <?php 
-        $categories_list = $product->get_category_ids();
-        foreach( $categories_list as $category){
-            $thumbnail_id = get_term_meta( $category, 'thumbnail_id', true );
-            $image = wp_get_attachment_url( $thumbnail_id );
-            // echo($category);
-            // $catName =  get_term( $category )->name ."<br>";
-
-        
-            echo("<div class='cat_element'><img class='cat_images' src='".$image."'><span class='cat_images_title'>". get_term( $category )->name ."</span></div>");
-        }
-        
-        ?>
         
     </div>
     <div class="caja2">
@@ -53,8 +39,23 @@ global $product;
         <span class="experiencia_wrapper"><?php esc_html_e( 'Experiencia:', 'woocommerce' ); ?> <span class="experiencia"><?php echo get_field('experiencia',$product->get_id()) ?></span></span><br>
         <span class="nacionalidad_wrapper"><?php esc_html_e( 'Nacionalidad:', 'woocommerce' ); ?> <span class="nacionalidad"><?php echo get_field('nacionalidad',$product->get_id()) ?></span></span><br>
         <span class="ciudad_origen_wrapper"><?php esc_html_e( 'Ciudad de Origen:', 'woocommerce' ); ?> <span class="ciudad_origen"><?php echo get_field('ciudad_de_origen',$product->get_id()) ?></span></span><br>
-        <?php echo wc_get_product_tag_list( $product->get_id(), ', ', '<span class="tagged_as">' . _n( 'Tag:', 'Tags:', count( $product->get_tag_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
     </div>
-	<?php do_action( 'woocommerce_product_meta_end' ); ?>
+
+    <div class="caja3">
+	<span>Categorias</span>
+        <?php 
+            $categories_list = $product->get_category_ids();
+            foreach( $categories_list as $category){
+                $thumbnail_id = get_term_meta( $category, 'thumbnail_id', true );
+                $image = wp_get_attachment_url( $thumbnail_id );
+                // echo($category);
+                // $catName =  get_term( $category )->name ."<br>";
+
+            
+                echo("<div class='cat_element'><img class='cat_images' src='".$image."'><span class='cat_images_title'>". get_term( $category )->name ."</span></div>");
+            }
+        
+        ?>
+        </div>
 
 </div>
