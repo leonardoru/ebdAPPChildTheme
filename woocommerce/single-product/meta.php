@@ -42,20 +42,7 @@ global $product;
     </div>
 
     <div class="caja3">
-	<span>Categorias</span>
-        <?php 
-            $categories_list = $product->get_category_ids();
-            foreach( $categories_list as $category){
-                $thumbnail_id = get_term_meta( $category, 'thumbnail_id', true );
-                $image = wp_get_attachment_url( $thumbnail_id );
-                // echo($category);
-                // $catName =  get_term( $category )->name ."<br>";
-
-            
-                echo("<div class='cat_element'><img class='cat_images' src='".$image."'><span class='cat_images_title'>". get_term( $category )->name ."</span></div>");
-            }
-        
-        ?>
+	
         </div>
 
 </div>
