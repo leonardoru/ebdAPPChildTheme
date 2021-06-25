@@ -7,7 +7,7 @@ $child_theme_root = get_stylesheet_directory_uri();
 include_once "acf-fields.php"; 
 
 # Enque main styles of the child theme
-wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles2.css");
+wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles3.css");
 
 
 # Woocommerce substitute functions

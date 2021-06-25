@@ -10,7 +10,8 @@
 
 /* Iconos de Categoria en Product Single View */
 .cat_element {
-    display: inline-grid;
+    display: flex;
+    margin: 2em 0;
 }
 
 .cat_images {
