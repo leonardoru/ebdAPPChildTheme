@@ -28,17 +28,3 @@ $heading = apply_filters( 'woocommerce_product_description_heading', __( 'Descri
 	<h2><?php echo esc_html( $heading ); ?></h2>
 <?php endif; ?>
 <?php the_content(); ?>
-<h3> Caracteristicas Principales </h4>
-<?php 
-        $categories_list = $product->get_category_ids();
-        foreach( $categories_list as $category){
-            $thumbnail_id = get_term_meta( $category, 'thumbnail_id', true );
-            $image = wp_get_attachment_url( $thumbnail_id );
-            // echo($category);
-            // $catName =  get_term( $category )->name ."<br>";
-            echo($catName);
-        
-            echo("<div class='cat_element'><img class='cat_images' src='".$image."'><span class='cat_images_title'>". get_term( $category )->name ."</span></div>");
-        }
-        
-        ?>

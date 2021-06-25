@@ -11,11 +11,11 @@
 /* Iconos de Categoria en Product Single View */
 .cat_element {
     display: flex;
-    margin: 2em 0;
+    margin: 0;
 }
 
 .cat_images {
-    width: 25px;
+    width: 22px;
     float: left;
     margin: 0 9px;
 }
