@@ -32,6 +32,7 @@ global $product;
         <span class="pantalon_wrapper"><?php esc_html_e( 'Pantalon:', 'woocommerce' ); ?> <span class="pantalon"><?php echo get_field('field_60cd25d3bead3',$product->get_id()) ?></span></span><br>
         <span class="medidas_wrapper"><?php esc_html_e( 'Medidas:', 'woocommerce' ); ?> <span class="medidas"><?php echo get_field('field_60cd24ffbeacf',$product->get_id()) ?></span></span><br>
         <?php echo wc_get_product_category_list( $product->get_id(), ', ', '<span class="posted_in">' . _n( 'Categoria:', 'Categorias:', count( $product->get_category_ids() ), 'woocommerce' ) . ' ', '</span>' ); ?>
+        
     </div>
     <div class="caja2">
         <span class="ojos_wrapper"><?php esc_html_e( 'Color de Ojos:', 'woocommerce' ); ?> <span class="ojos"><?php echo get_field('field_60cd257abead1',$product->get_id()) ?></span></span><br>

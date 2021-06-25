@@ -1,0 +1,31 @@
+.caja1 {
+    width: 45%;
+    float: left;
+}
+
+/* Header Menu elements */
+.main-navigation ul li a:hover, .main-navigation ul li:hover > a, .site-title a:hover, .site-header ul.menu li.current-menu-item > a {
+    color: #000;
+}
+
+/* Iconos de Categoria en Product Single View */
+.cat_element {
+    display: inline-grid;
+}
+
+.cat_images {
+    width: 25px;
+    float: left;
+    margin: 0 9px;
+}
+
+.cat_images_title{
+    float:left;
+    text-align: center;
+}
+
+/* Css for Home */
+/* .wc-block-grid__products .wc-block-grid__product-image img {
+    height: 25em !important;
+    width: auto !important;
+} */

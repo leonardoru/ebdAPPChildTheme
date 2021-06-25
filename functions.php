@@ -7,7 +7,7 @@ $child_theme_root = get_stylesheet_directory_uri();
 include_once "acf-fields.php"; 
 
 # Enque main styles of the child theme
-wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles.css");
+wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles2.css");
 
 
 # Woocommerce substitute functions
@@ -34,7 +34,7 @@ wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles.css"
 			$tabs['additional_information'] = array(
 				'title'    => __( 'Servicios Adicionales', 'woocommerce' ),
 				'priority' => 20,
-				'callback' => 'servicios_adicionales_tab',
+				'callback' => 'woocommerce_product_additional_information_tab',
 			);
 		}
 
@@ -59,4 +59,7 @@ wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles.css"
 	function servicios_adicionales_tab() {
 		wc_get_template( $child_theme_root . '/single-product/tabs/servicios_adicionales.php' );
 	}
+
+
+    
 ?>

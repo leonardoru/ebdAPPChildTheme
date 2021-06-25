@@ -1,9 +1,0 @@
-.caja1 {
-    width: 45%;
-    float: left;
-}
-
-/* Header Menu elements */
-.main-navigation ul li a:hover, .main-navigation ul li:hover > a, .site-title a:hover, .site-header ul.menu li.current-menu-item > a {
-    color: #000;
-}
