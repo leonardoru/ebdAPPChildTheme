@@ -7,7 +7,7 @@ $child_theme_root = get_stylesheet_directory_uri();
 include_once "acf-fields.php"; 
 
 # Enque main styles of the child theme
-wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles5.css");
+wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles6.css");
 
 // Custom Taxonomies
 // -- Adicionales
@@ -179,38 +179,56 @@ function woo_new_product_tab_precios() {
 	global $post;
 	global $product;
 
-	// The new tab content
+	// Returns All Term Items for "my_taxonomy".
+	$term_list = wp_get_post_terms( $post->ID, 'cat_precios', array( 'fields' => 'all' ) );
+	$cat_precios_id = $term_list[0]->term_id;
+	$term_name = get_term( $cat_precios_id )->name;
+	$term_desc = get_term( $cat_precios_id )->desc;
+
+	// Get values for current price category
+	$fields = get_fields('cat_precios_'.$cat_precios_id);
+	// print_r($fields);
+
+	// Get category icon 
+	$term_icon = $fields['icono_de_categoria'];
+	$term_icon_url = wp_get_attachment_url($term_icon);
+	$term_icon_html = "<img src='". $term_icon_url . "' class='cat_icon' >";
+	unset($fields['category_icon']);
+
+	// Get category colors
+	$term_color_1 = $fields['color_principal'];
+	$term_color_2 = $fields['color_Secundario'];
+	$term_color_border = $fields['color_borde'];
+	$color_texto = $fields['color_texto'];
+
+	$styles = "style='".
+	$styles .= "border : 1px solid " . $term_color_border . ";";
+	$styles .= "background: linear-gradient(45deg," . $term_color_1 . ",". $term_color_border . ");";
+	$styles .= "color:".$color_texto.";";
+	$styles .="'";
+
 
 	echo '<h2>Tabla de Precios</h2>';
-	echo '<p>A continuacion encontrars los precios para esta modelo:</p>'; 
-	//Returns All Term Items for "my_taxonomy".
-	$term_list = wp_get_post_terms( $post->ID, 'cat_precios', array( 'fields' => 'all' ) );
-	$car_precios_id = $term_list[0]->term_id;
-	$term_name = get_term( $term_list[$i]->term_id )->name;
-	$term_desc = get_term( $term_list[$i]->term_id )->desc;
-		// echo($term_desc);
-		$fields = get_fields('cat_precios_'.$car_precios_id);
-		// print_r($fields);
-		foreach ($fields as $key => $field){
+	echo '<div class="cat_badge" id="categoria_' . $term_name .' "'. $styles . '  > Categoria: '. $term_icon_html . '<span>'. $term_name .'</span></div>' ;
+	// echo '<p> A continuacion encontrars los precios para esta modelo: </p>'; 
+	
 
-			if ( $key == 'category_icon'){
-				continue;
-			}
+	foreach ($fields as $key => $field){
 
-			if ( $field == null){
-				continue;
-			} else {
-				$key = str_replace('_'," ",$key);
-				$key = ucwords($key);
-				echo($key . " = \$COP ".$field . "</br>");
-			}
+		if ( $field == null){
+			continue;
+		} else {
+			$key = str_replace('_'," ",$key);
+			$key = ucwords($key);
+			echo($key . " = \$COP ".$field . "</br>");
 		}
-		
-		// $adicional_nombre = $term_list[$i]->name;
-		// $adicional_precio = get_field('field_60d7a24eb2409', 'item_' . $adicional_id);
-		// $adicional_image = get_field('field_60d7a297b254440a','item_' . $adicional_id);
-		// $adicional_image = wp_get_attachment_url( $adicional_image );
-		// echo("<div class='adicional_element'><img class='adicional_icon' src='". $adicional_image ." '><span class='adicional_title'>". $adicional_nombre ."</span> <span class='adicional_precio'> ... \$COP ". $adicional_precio ."</span></div>");
+	}
+	
+	// $adicional_nombre = $term_list[$i]->name;
+	// $adicional_precio = get_field('field_60d7a24eb2409', 'item_' . $adicional_id);
+	// $adicional_image = get_field('field_60d7a297b254440a','item_' . $adicional_id);
+	// $adicional_image = wp_get_attachment_url( $adicional_image );
+	// echo("<div class='adicional_element'><img class='adicional_icon' src='". $adicional_image ." '><span class='adicional_title'>". $adicional_nombre ."</span> <span class='adicional_precio'> ... \$COP ". $adicional_precio ."</span></div>");
 }
 
 /**

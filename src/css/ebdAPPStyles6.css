@@ -26,8 +26,24 @@
     text-align: center;
 }
 
+
+.cat_icon {
+    width:25px;
+    float: left;
+}
+
+
 /* Css for Home */
 /* .wc-block-grid__products .wc-block-grid__product-image img {
     height: 25em !important;
     width: auto !important;
 } */
+
+/* Categorias */
+div.cat_badge{
+    border: 1px solid;
+    border-radius: 5px;
+    text-align: center;
+    width: 28%;
+    padding: 3px;  
+}
