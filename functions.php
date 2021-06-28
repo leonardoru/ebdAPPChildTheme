@@ -142,17 +142,20 @@ function woo_new_product_tab_caracteristicas() {
 
 	echo '<h2>Caracteristicas Especificas</h2>';
 	echo '<p>Algunas de las caracteristicas mas destacada de esta modelo son:</p>';
-
+	echo '<table>';
 	$categories_list = $product->get_category_ids();
 	foreach( $categories_list as $category){
 		$thumbnail_id = get_term_meta( $category, 'thumbnail_id', true );
 		$image = wp_get_attachment_url( $thumbnail_id );
+		$caracteristica_name = get_term( $category )->name;
+		$caracteristica_description = get_term( $category )->description;
 		// echo($category);
 		// $catName =  get_term( $category )->name ."<br>";
 
 	
-		echo("<div class='cat_element'><img class='cat_images' src='".$image."'><span class='cat_images_title'>". get_term( $category )->name ."</span></div>");
-	}       
+		echo("<tr><td><img class='cat_images' src='".$image."'></td><td>". $caracteristica_name ."</td><td>". $caracteristica_description."</div>");
+	}  
+	echo '</table>';     
 }
 function woo_new_product_tab_adicionales() {
 	global $post;
@@ -165,15 +168,17 @@ function woo_new_product_tab_adicionales() {
 	//Returns All Term Items for "my_taxonomy".
 	$term_list = wp_get_post_terms( $post->ID, 'item', array( 'fields' => 'all' ) );
 	//print_r( $term_list );
-
+	echo '<table>';
+	// echo '<tr><th></th><th>Servicio</th><th>Precio</th>';
 	for( $i = 0; $i<count($term_list); $i++){
 		$adicional_id = $term_list[$i]->term_id;
 		$adicional_nombre = $term_list[$i]->name;
 		$adicional_precio = get_field('field_60d7a24eb2409', 'item_' . $adicional_id);
 		$adicional_image = get_field('field_60d7a297b254440a','item_' . $adicional_id);
 		$adicional_image = wp_get_attachment_url( $adicional_image );
-		echo("<div class='adicional_element'><img class='adicional_icon' src='". $adicional_image ." '><span class='adicional_title'>". $adicional_nombre ."</span> <span class='adicional_precio'> ... \$COP ". $adicional_precio ."</span></div>");
+		echo("<tr><td><img class='adicional_icon' src='". $adicional_image ." '></td><td class='adicional_title'>". $adicional_nombre ."</td> <td class='adicional_precio'> \$COP ". $adicional_precio ."</td></tr>");
 	}
+	echo '</table>';
 }
 function woo_new_product_tab_precios() {
 	global $post;
@@ -193,13 +198,19 @@ function woo_new_product_tab_precios() {
 	$term_icon = $fields['icono_de_categoria'];
 	$term_icon_url = wp_get_attachment_url($term_icon);
 	$term_icon_html = "<img src='". $term_icon_url . "' class='cat_icon' >";
-	unset($fields['category_icon']);
+	unset($fields['icono_de_categoria']);
+	
 
 	// Get category colors
 	$term_color_1 = $fields['color_principal'];
-	$term_color_2 = $fields['color_Secundario'];
+	$term_color_2 = $fields['Color Secundario'];
 	$term_color_border = $fields['color_borde'];
 	$color_texto = $fields['color_texto'];
+
+	unset($fields['color_principal']);
+	unset($fields['Color Secundario']);
+	unset($fields['color_borde']);
+	unset($fields['color_texto']);
 
 	$styles = "style='".
 	$styles .= "border : 1px solid " . $term_color_border . ";";
@@ -209,10 +220,10 @@ function woo_new_product_tab_precios() {
 
 
 	echo '<h2>Tabla de Precios</h2>';
-	echo '<div class="cat_badge" id="categoria_' . $term_name .' "'. $styles . '  > Categoria: '. $term_icon_html . '<span>'. $term_name .'</span></div>' ;
+	//echo '<div class="cat_badge" id="categoria_' . $term_name .' "'. $styles . '  > Categoria: '. $term_icon_html . '<span>'. $term_name .'</span></div>' ;
 	// echo '<p> A continuacion encontrars los precios para esta modelo: </p>'; 
-	
-
+	echo '<table>';
+	echo '<tr><th><div class="cat_badge" id="categoria_' . $term_name .' "'. $styles . '  > '. $term_icon_html . '<span>'. $term_name .'</span></div></th><th>Precio</th>';
 	foreach ($fields as $key => $field){
 
 		if ( $field == null){
@@ -220,15 +231,10 @@ function woo_new_product_tab_precios() {
 		} else {
 			$key = str_replace('_'," ",$key);
 			$key = ucwords($key);
-			echo($key . " = \$COP ".$field . "</br>");
+			echo("<tr><td>" . $key . "</td><td>\$COP " . $field . "</td></tr>");
 		}
 	}
-	
-	// $adicional_nombre = $term_list[$i]->name;
-	// $adicional_precio = get_field('field_60d7a24eb2409', 'item_' . $adicional_id);
-	// $adicional_image = get_field('field_60d7a297b254440a','item_' . $adicional_id);
-	// $adicional_image = wp_get_attachment_url( $adicional_image );
-	// echo("<div class='adicional_element'><img class='adicional_icon' src='". $adicional_image ." '><span class='adicional_title'>". $adicional_nombre ."</span> <span class='adicional_precio'> ... \$COP ". $adicional_precio ."</span></div>");
+	echo '</table>';
 }
 
 /**
