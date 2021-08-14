@@ -1,0 +1,23 @@
+{
+  "name": "ebdchildtheme",
+  "version": "1.0.0",
+  "description": "A child theme for storefront woocommerce theme.",
+  "main": "index.js",
+  "scripts": {
+    "test": "testIt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonardoru/ebdAPPChildTheme.git"
+  },
+  "keywords": [
+    "woocommerce",
+    "storefront"
+  ],
+  "author": "Publimonster.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonardoru/ebdAPPChildTheme/issues"
+  },
+  "homepage": "https://github.com/leonardoru/ebdAPPChildTheme#readme"
+}
