@@ -8,6 +8,11 @@
     color: #000;
 }
 
+/* Logo */
+.custom-logo{
+    max-width: 350px;
+}
+
 /* Iconos de Categoria en Product Single View */
 .cat_element, .adicional_element {
     display: flex;
