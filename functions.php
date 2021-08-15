@@ -2,12 +2,14 @@
 
 # Define some useful vars
 $child_theme_root = get_stylesheet_directory_uri();
+$styles_manifest_path = $child_theme_root . 'dist/css/manifest.json';
+$stylesManifest = new Manifest($styles_manifest_path);
 
 # Include the ACF Field definition file
 include_once "acf-fields.php"; 
 
 # Enque main styles of the child theme
-wp_enqueue_style("ebdAPPStyles", $child_theme_root . "/src/css/ebdAPPStyles7.css");
+wp_enqueue_style("ebdAPPStyles", $child_theme_root . $stylesManifest->assetpath("ebdAPPStyles.css", 'css'),[],null);
 
 // Custom Taxonomies
 // -- Adicionales

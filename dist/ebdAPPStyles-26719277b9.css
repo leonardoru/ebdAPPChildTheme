@@ -1,0 +1,57 @@
+.caja1 
+    {width: 45%;
+    float: left;
+    }
+
+/* Header Menu elements */
+.main-navigation ul li a:hover, .main-navigation ul li:hover > a, .site-title a:hover, .site-header ul.menu li.current-menu-item > a 
+{
+    color: #000;
+}
+
+/* Logo */
+.custom-logo{
+    max-width: 350px;
+}
+
+/* Iconos de Categoria en Product Single View */
+.cat_element, .adicional_element {
+    display: flex;
+    margin: 0 6px 0 0;
+}
+
+.cat_images,
+.adicional_icon {
+    width: 22px;
+    float: left;
+    margin: 0 6px;
+}
+
+.cat_images_title{
+    float:left;
+    text-align: center;
+}
+
+
+.cat_icon {
+    width:25px;
+    float: left;
+}
+
+
+/* Css for Home */
+/* .wc-block-grid__products .wc-block-grid__product-image img {
+    height: 25em !important;
+    width: auto !important;
+} */
+
+/* Categorias */
+div.cat_badge{
+    border: 1px solid;
+    border-radius: 5px;
+    text-align: center;
+    width: 50%;
+    padding: 3px;  
+}
+
+/*# sourceMappingURL=ebdAPPStyles-26719277b9.css.map */
