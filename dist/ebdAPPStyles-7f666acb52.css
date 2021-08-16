@@ -54,4 +54,11 @@ div.cat_badge{
     padding: 3px;  
 }
 
-/*# sourceMappingURL=ebdAPPStyles-26719277b9.css.map */
+@media (min-width: 768px){
+.site-header .site-branding img {
+    height: auto;
+    max-width: 310px;
+    max-height: none;
+}
+}
+/*# sourceMappingURL=ebdAPPStyles-7f666acb52.css.map */

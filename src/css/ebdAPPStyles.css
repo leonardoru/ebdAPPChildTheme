@@ -54,9 +54,10 @@ div.cat_badge{
     padding: 3px;  
 }
 
-@media (min-width: 768px)
+@media (min-width: 768px){
 .site-header .site-branding img {
     height: auto;
     max-width: 310px;
     max-height: none;
+}
 }
