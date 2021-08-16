@@ -4,10 +4,6 @@
 $child_theme_root = get_stylesheet_directory_uri();
 
 // Decode Manifest
-$stylesManifestPath = $child_theme_root . "/dist/css/manifest.json";
-get_file_contents('/dist/manifest.json');
-
-// Decode Manifest
 $stylesManifestPath = $child_theme_root . "/dist/manifest.json";
 $stylesManifest = file_get_contents($stylesManifestPath);
 $stylesManifest = json_decode($stylesManifest, true);
